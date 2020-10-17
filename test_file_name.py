@@ -1,13 +1,9 @@
-from mp import zipcode_lookup
+from file_name import currency_converter
 
-def test_mptest():
-	assert zipcode_lookup("08754") == "08754: Toms River, NJ"
-	assert zipcode_lookup("06484") == "06484: Shelton, CT"
-	assert zipcode_lookup("00000") == "place not found"
-	assert zipcode_lookup("ertyu") == "Invalid input ertyu"
-
-
-
-
-
-
+def test_file_name():
+	assert currency_converter(1, "USD", "USD") == "1 in USD = 1 in USD"
+	assert currency_converter(1, "INR", "INR") == "1 in INR = 1 in INR"
+	assert currency_converter(1, "ert", "USD") == "one or more currency codes not found"
+	assert currency_converter(1, "USD", "ert") == "TO currency code not found"
+	assert currency_converter(1, "TTT", "USD") == "one or more currency codes not found"
+	assert currency_converter(1, "USD", "TTT") == "TO currency code not found"
